@@ -1,4 +1,12 @@
+tuto_user:
+    resource: "@UserBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 #app/config/routing.yml
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
+
+user_bundle:
+   resource: "@UserBundle/Resources/config/routing.yml"
