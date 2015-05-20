@@ -1,4 +1,5 @@
-tuto_user:
+#app/config/routing.yml
+user:
     resource: "@UserBundle/Controller/"
     type:     annotation
     prefix:   /
@@ -8,5 +9,10 @@ app:
     resource: "@AppBundle/Controller/"
     type:     annotation
 
+# app/config/routing.yml
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+#app/config/routing.yml
 user_bundle:
    resource: "@UserBundle/Resources/config/routing.yml"

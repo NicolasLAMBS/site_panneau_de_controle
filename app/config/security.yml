@@ -18,6 +18,7 @@ security:
                check_path: /login_check
                login_path: /login
                provider: fos_userbundle
+               csrf_provider: security.csrf.token_manager
            logout:
                path:    /logout
                target: /
