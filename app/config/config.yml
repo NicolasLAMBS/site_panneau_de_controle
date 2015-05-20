@@ -5,7 +5,7 @@ imports:
 
 framework:
     #esi:             ~
-    #translator:      ~
+    translator:      ~
 
 
     secret:          "%secret%"

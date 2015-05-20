@@ -1,2 +1,7 @@
-{# src/AppBundle/Resources/views/index.html.twig #}
-{% extends '::base.html.twig' %}
+{# src/AppBundle/Resources/views/Page/index.html.twig #}
+{% extends "AppBundle::layout.html.twig" %}
+
+{% block fos_index_content %}
+    Je suis un simple user connecté
+{% endblock fos_index_content %}
+
