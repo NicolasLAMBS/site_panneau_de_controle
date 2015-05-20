@@ -5,7 +5,7 @@ user:
     prefix:   /
 
 #app/config/routing.yml
-app:
+AppBundle:
     resource: "@AppBundle/Controller/"
     type:     annotation
 
