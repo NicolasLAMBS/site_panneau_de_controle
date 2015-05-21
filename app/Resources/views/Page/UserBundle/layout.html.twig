@@ -1,4 +1,4 @@
-{# src/UserBundle/Resources/views/layout.html.twig #}
+{# app/Resources/views/page/UserBundle/layout.html.twig #}
 {%  extends '::base.html.twig' %}
 
 {%  block body%}
@@ -21,8 +21,11 @@
         {% endfor %}
     {% endfor %}
 
-    <div>
-        {% block fos_user_content %}
-        {% endblock fos_user_content %}
-    </div>
+    {% block fos_login_content %}
+    {% endblock fos_login_content %}
+    {% block fos_admin_content %}
+    {% endblock fos_admin_content %}
+
+    <div><a href="{{ path('app_page/appBundle_index') }}">Retour à l'index</a></div>
+
 {%  endblock %}
