@@ -31,11 +31,21 @@ class AdminController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($url);
-            $em->flush();
 
-            $request->getSession()->getFlashBag()->add('notice', 'Annonce bien enregistrée.');
+            $ch = curl_init('url');
+            curl_exec($ch);
+            $code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+            curl_close($ch);
+
+            if ($code == 200) {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($url);
+                $em->flush();
+
+                $request->getSession()->getFlashBag()->add('notice', 'Annonce bien enregistrée.');
+            } else {
+                $request->getSession()->getFlashBag()->add('notice', 'Votre URL n\'est pas valide');
+            }
 
             return $this->redirect($this->generateUrl('app_page/UserBundle_admin', array('form' => $form->createView(),
             )));
