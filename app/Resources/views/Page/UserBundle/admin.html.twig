@@ -2,5 +2,21 @@
 {% extends ":page/UserBundle:layout.html.twig" %}
 
 {% block fos_admin_content %}
-    Ici je peux ajouter une url !
+    <br />
+
+    <h3>Formulaire d'ajout d'URL :</h3>
+
+    {{ form_start(form) }}
+        {{ form_errors(form) }}
+
+        {{ form_row(form.url) }}
+        {{ form_row(form.save) }}
+
+    {{ form_end(form) }}
+
+    <p>Et ici je peux voir la liste complète des urls :</p>
+    <br />
+
+    {{ render(controller('UserBundle:listUrl:showUrl')) }}
 {% endblock fos_admin_content %}
+

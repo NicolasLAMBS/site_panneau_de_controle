@@ -43,6 +43,11 @@
                 {% endblock %}
             </div>
         </section>
-        {% block javascripts %}{% endblock %}
+        {% block javascripts
+            '@AppBundle/Resources/public/js/*'
+            'js/*'
+            'https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js' %}
+            <script type="text/javascript" src=" {{ asset_url  }} "></script>
+        {% endblock %}
     </body>
 </html>

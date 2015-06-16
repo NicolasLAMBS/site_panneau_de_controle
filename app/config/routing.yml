@@ -13,6 +13,4 @@ AppBundle:
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
 
-#app/config/routing.yml
-user_bundle:
-   resource: "@UserBundle/Resources/config/routing.yml"
+
