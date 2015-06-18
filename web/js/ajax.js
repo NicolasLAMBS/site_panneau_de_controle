@@ -2,28 +2,57 @@
  * Created by dev on 16/06/2015.
  */
 
-$(document).ready(function(){
+$(document).ready(function() {
 
-    $(".form_save_id").click(function(e) {
-        e.preventDefault();
-
-        //var data = $(".form_url_id").val();
+    $("#form").on('submit', function(e) {
 
         $.post(
-            '@UserBundle/Controller/AdminController.php',
+            $(this).attr('action'),
             {
-                data :$(".form_url_id").val()
+                url: $("#form_url_id").val()
             },
-            'show_url',
+            function listUrl(reponse) {
+
+                if(!reponse) {
+                    console.log("fail no reponse");
+                } else {
+                    console.log("gg");
+                    console.log(reponse);
+                    var urlreponse = reponse.urlreponse;
+                    console.log(urlreponse);
+                    var idreponse = reponse.idreponse;
+                    console.log(idreponse);
+
+                    $('#list_url').append("<li>" + urlreponse + " <button class=\"delete\" id=" + idreponse + " type=\"submit\"> Supprimer" + "</button></li>" );
+                }
+            },
             'json'
         );
+        return false;
+    });
 
-        function show_url(data_return){
-            if(data_return == 'Success'){
 
-            } else{
+    $("#list_url").on('click', 'button', function(e) {
 
-            }
-        }
-    })
-})
+        var iddelete = $(this).attr("id");
+
+        $.post(
+            '/app_dev.php/admin/ajax/delete',
+            {
+                id: iddelete
+            },
+            function deleteUrl(reponse) {
+                if(reponse){
+
+                    var idtestcc = '#'+iddelete+'';
+                    $(idtestcc).parent().remove();
+                } else{
+
+                    console.log("fail remove");
+                }
+            },
+            'json'
+        );
+        return false;
+    });
+});

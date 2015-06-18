@@ -1,7 +1,7 @@
 {# app/Resources/views/page/UserBundle/listUrl.html.twig #}
 
-<ul>
+<ul id="list_url">
     {% for url in listUrl %}
-        <li>{{ url.url }}</li>
+        <li>{{ url.url }} <button input="submit" id="{{ url.id }}" class="delete">Supprimer</button> </li>
     {% endfor %}
 </ul>

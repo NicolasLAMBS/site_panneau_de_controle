@@ -6,7 +6,7 @@
 
     <h3>Formulaire d'ajout d'URL :</h3>
 
-    {{ form_start(form, {'id': 'form_id'}) }}
+    {{ form_start(form, {'attr': {'id': 'form'} } ) }}
         {{ form_errors(form) }}
 
         {{ form_row(form.url, {'id': 'form_url_id'}) }}
@@ -17,6 +17,6 @@
     <p>Et ici je peux voir la liste complète des urls :</p>
     <br />
 
-    {{ render(controller('UserBundle:listUrl:showUrl')) }}
+    {{ render(controller('UserBundle:ListUrl:showUrl')) }}
 {% endblock fos_admin_content %}
 

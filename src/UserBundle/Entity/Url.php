@@ -12,27 +12,22 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @ORM\Table(name="url")
  */
 
-/**
- * @ORM\Entity
- * @UniqueEntity(fields="url", message="url already taken")
- */
 class Url
 {
-
-
     /**
      * @ORM\GeneratedValue
      * @ORM\Id
      * @ORM\Column(type="integer")
      */
-
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @var string $url
+     *
+     * @ORM\Column(name="url", type="string", length=255, unique=true)
+     * @Assert\Url()
      * @Assert\NotBlank()
      */
-
     protected $url;
 
     public function __construct()
