@@ -31,7 +31,6 @@ $(document).ready(function() {
         return false;
     });
 
-
     $("#list_url").on('click', 'button', function(e) {
 
         var iddelete = $(this).attr("id");
@@ -55,4 +54,30 @@ $(document).ready(function() {
         );
         return false;
     });
+
+    setInterval(function() {checkSite()}, 60000000);
+
+    function checkSite() {
+        $.post(
+            '/app_dev.php/ajax/checkedTime',
+            {},
+            function checkUrlSite(reponse) {
+                if(!reponse) {
+
+                    console.log("fail no reponse check");
+                } else {
+
+                    var idreponse = reponse;
+                    var rowCount = reponse.length;
+
+                    for (var i = 0; i<= rowCount ; i++){
+
+                        var idcontruc = '#'+ idreponse[i] +'';
+                        $(idcontruc).addClass( "redError" );
+                    }
+                }
+            },
+            'json'
+        );
+    }
 });

@@ -1,0 +1,16 @@
+.TvParam {
+
+    height : 150px;
+    width: 200px;
+    border : solid 3px green;
+    padding : 10px;
+    padding-top: 60px;
+    margin : 20px;
+    border-radius: 15px;
+    text-align: center;
+    display:inline-block;
+}
+
+.redError {
+    border : solid 3px red;
+}

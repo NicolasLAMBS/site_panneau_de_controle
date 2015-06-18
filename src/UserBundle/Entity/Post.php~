@@ -1,31 +1,26 @@
 <?php
-// src/UserBundle/Entity/User.php
 
 namespace UserBundle\Entity;
 
-use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
+ * Post
+ *
+ * @ORM\Table()
  * @ORM\Entity
- * @ORM\Table(name="fos_user")
  */
-
-
-class User extends BaseUser
+class Post
 {
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
-     * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    protected $id;
+    private $id;
 
-    public function __construct()
-    {
-        parent::__construct();
-        // your own logic
-    }
 
     /**
      * Get id

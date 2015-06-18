@@ -15,8 +15,8 @@
         {% endfor %}
     {% endfor %}
 
-    <div>
-        Ici il y aura pleins d'url pour le panneau de controle
+    <div id="tvcontent">
+        {{ render(controller('AppBundle:Index:showSite')) }}
     </div>
 
 

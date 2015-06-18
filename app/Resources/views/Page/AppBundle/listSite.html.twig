@@ -1,0 +1,6 @@
+{# app/Resources/views/page/appBundle/listSite.html.twig #}
+<div id="list_site">
+    {% for url in listUrl %}
+        <div class="TvParam" id="{{ url.id }}" > {{ url.url }} </div>
+    {% endfor %}
+</div>

@@ -10,9 +10,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use UserBundle\Entity\Url;
 use Symfony\Component\HttpFoundation\Request;
 
-/**
- * @Route("/")
- */
 class ListUrlController extends Controller
 {
 
