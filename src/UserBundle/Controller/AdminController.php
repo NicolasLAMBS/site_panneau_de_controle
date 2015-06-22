@@ -36,21 +36,6 @@ class AdminController extends Controller
 
         if ($form->isValid()) {
 
-            $ch = curl_init('url');
-            curl_exec($ch);
-            $code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-            curl_close($ch);
-
-            if ($code == 200) {
-                $em = $this->getDoctrine()->getManager();
-                $em->persist($url);
-                $em->flush();
-
-                $request->getSession()->getFlashBag()->add('notice', 'Annonce bien enregistrée.');
-            } else {
-                $request->getSession()->getFlashBag()->add('notice', 'Votre URL n\'est pas valide');
-            }
-
             return $this->redirect($this->generateUrl('app_page/UserBundle_admin', array('form' => $form->createView(),
             )));
         }
@@ -70,17 +55,30 @@ class AdminController extends Controller
 
             if ($url_data) {
 
-                $urlObject = new Url();
-                $urlObject->setUrl($url_data);
+                $ch = curl_init($url_data);
+                curl_setopt($ch, CURLOPT_NOBODY, true);
+                curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+                curl_exec($ch);
+                $retcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+                curl_close($ch);
 
-                $em = $this->getDoctrine()->getManager();
+                if ($retcode == 200) {
+                    $urlObject = new Url();
+                    $urlObject->setUrl($url_data);
+
+                    $em = $this->getDoctrine()->getManager();
                     $em->persist($urlObject);
                     $em->flush();
 
-                $idurl = $urlObject->getId();
-                $datareponse = array('urlreponse' => $url_data, 'idreponse' =>  $idurl);
+                    $idurl = $urlObject->getId();
+                    $datareponse = array('urlreponse' => $url_data, 'idreponse' =>  $idurl);
 
-                return new JsonResponse($datareponse);
+                    return new JsonResponse($datareponse);
+
+                } else {
+                    return new JsonResponse('fail');
+                    return new Response("\$url is not valid");
+                }
             }
             else {
 

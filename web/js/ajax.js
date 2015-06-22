@@ -3,6 +3,7 @@
  */
 
 $(document).ready(function() {
+    console.log("jQuery est prêt !");
 
     $("#form").on('submit', function(e) {
 
@@ -12,11 +13,24 @@ $(document).ready(function() {
                 url: $("#form_url_id").val()
             },
             function listUrl(reponse) {
+                $(form_url_id).removeClass( "redError" );
 
                 if(!reponse) {
+
                     console.log("fail no reponse");
-                } else {
-                    console.log("gg");
+                    return false;
+                }
+
+                if (reponse == 'fail') {
+
+                    console.log("fail url is wrong");
+                    $(form_url_id).addClass( "redError" );
+                    return false;
+                }
+
+                if (reponse ) {
+
+                    console.log("gj");
                     console.log(reponse);
                     var urlreponse = reponse.urlreponse;
                     console.log(urlreponse);
@@ -54,30 +68,4 @@ $(document).ready(function() {
         );
         return false;
     });
-
-    setInterval(function() {checkSite()}, 60000000);
-
-    function checkSite() {
-        $.post(
-            '/app_dev.php/ajax/checkedTime',
-            {},
-            function checkUrlSite(reponse) {
-                if(!reponse) {
-
-                    console.log("fail no reponse check");
-                } else {
-
-                    var idreponse = reponse;
-                    var rowCount = reponse.length;
-
-                    for (var i = 0; i<= rowCount ; i++){
-
-                        var idcontruc = '#'+ idreponse[i] +'';
-                        $(idcontruc).addClass( "redError" );
-                    }
-                }
-            },
-            'json'
-        );
-    }
 });

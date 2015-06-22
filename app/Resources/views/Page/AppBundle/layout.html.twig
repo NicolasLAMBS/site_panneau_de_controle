@@ -2,7 +2,7 @@
 {%  extends '::base.html.twig' %}
 
 {% block navigation %}
-    coucou je suis la navigation
+    coucou je suis la navigation !!!
 {% endblock %}
 
 {%  block body%}
@@ -25,4 +25,8 @@
 {% block footer %}
     Et moi je suis le footer niak niak<br />
     Symfony2 Panneau de controle - created by Nicolas LAMBS
+{% endblock %}
+
+{% block complementJS %}
+    <script src="{{ asset('js/ajax1.js') }}" type="text/javascript"></script>
 {% endblock %}

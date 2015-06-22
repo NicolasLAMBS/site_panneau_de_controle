@@ -20,7 +20,12 @@ class Url
      * @ORM\Id
      * @ORM\Column(type="integer")
      */
-    private $id;
+    protected $id;
+
+    /**
+     * @ORM\Column(type="integer", name="state", nullable=true)
+     */
+    protected $state;
 
     /**
      * @var string $url
@@ -68,5 +73,28 @@ class Url
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set state
+     *
+     * @param integer $state
+     * @return Url
+     */
+    public function setState($state)
+    {
+        $this->state = $state;
+
+        return $this;
+    }
+
+    /**
+     * Get state
+     *
+     * @return integer 
+     */
+    public function getState()
+    {
+        return $this->state;
     }
 }
