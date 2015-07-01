@@ -14,6 +14,8 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Console\Tester\CommandTester;
+use Symfony\Bundle\FrameworkBundle\Console\Application;
 
 class CronTasksRunCommand extends ContainerAwareCommand
 {
@@ -22,8 +24,6 @@ class CronTasksRunCommand extends ContainerAwareCommand
         $this
             ->setName('MonitorUrl')
             ->setDescription('Ping Url and check the answer')
-            ->addArgument('name', InputArgument::OPTIONAL, 'Qui voulez vous saluer??')
-            ->addOption('yell', null, InputOption::VALUE_NONE, 'Si définie, la tâche criera en majuscules')
         ;
     }
 
