@@ -23,10 +23,9 @@ class AdminController extends Controller
     */
     public function UrlAction(Request $request)
     {
-
         $url = new Url();
         $form = $this->createFormBuilder($url)
-            ->setAction($this->generateUrl('admin_ajax'))
+            ->setAction($this->generateUrl('admin_add_url'))
             ->setMethod('POST')
             ->add('url',      'url')
             ->add('save',     'submit')
@@ -36,16 +35,16 @@ class AdminController extends Controller
 
         if ($form->isValid()) {
 
-            return $this->redirect($this->generateUrl('app_page/UserBundle_admin', array('form' => $form->createView(),
+            return $this->redirect($this->generateUrl('admin', array('form' => $form->createView(),
             )));
         }
 
-        return $this->render(':page/UserBundle:admin.html.twig', array('form' => $form->createView(),
+        return $this->render('page/admin.html.twig', array('form' => $form->createView(),
         ));
     }
 
     /**
-     * @Route("/admin/ajax", name="admin_ajax")
+     * @Route("/admin/ajax/add", name="admin_add_url")
      * @Method({"POST"})
      */
     public function stockUrlAction(Request $request)
@@ -91,7 +90,7 @@ class AdminController extends Controller
     }
 
     /**
-     * @Route("/admin/ajax/delete", name="admin_ajax_delete")
+     * @Route("/admin/ajax/delete", name="admin_delete_url")
      * @Method({"POST"})
      */
     public function deleteUrlAction(Request $request)

@@ -12,14 +12,17 @@ use Symfony\Component\HttpFoundation\Request;
 
 class ListUrlController extends Controller
 {
-
+    /**
+     * @Route("/admin/ajax/listUrl", name="admin_list_url")
+     * @Method({"POST"})
+     */
     public function showUrlAction()
     {
         $listUrl = $this->getDoctrine()
             ->getRepository('UserBundle:Url')
             ->findAll();
 
-        return $this->render(':page/UserBundle:listUrl.html.twig', array('listUrl' => $listUrl,
+        return $this->render('page/index.html.twig', array('listUrl' => $listUrl,
         ));
     }
 }

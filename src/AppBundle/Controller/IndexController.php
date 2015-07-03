@@ -17,12 +17,12 @@ use Symfony\Component\HttpFoundation\Response;
 class IndexController extends Controller
 {
     /**
-     * @Route("/", name="app_page/appBundle_index")
+     * @Route("/", name="index")
      * @Method({"GET"})
      */
     public function indexAction()
     {
-        return $this->render(':page/appBundle:index.html.twig');
+        return $this->render('page/index.html.twig');
     }
 
     public function showSiteAction()
@@ -31,7 +31,7 @@ class IndexController extends Controller
             ->getRepository('UserBundle:Url')
             ->findAll();
 
-        return $this->render(':page/appBundle:listSite.html.twig', array('listUrl' => $listUrl,
+        return $this->render('page/listSite.html.twig', array('listUrl' => $listUrl,
         ));
     }
 
