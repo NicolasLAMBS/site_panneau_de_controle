@@ -25,6 +25,11 @@ class IndexController extends Controller
         return $this->render('page/index.html.twig');
     }
 
+
+    /**
+     * @Route("/admin/ajax/listSite", name="index_list_site")
+     * @Method({"POST"})
+     */
     public function showSiteAction()
     {
         $listSite = $this->getDoctrine()
