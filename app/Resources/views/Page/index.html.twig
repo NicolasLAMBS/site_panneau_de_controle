@@ -1,9 +1,8 @@
 {# app/Resources/views/page/index.html.twig #}
 {% extends "page/layoutindex.html.twig" %}
 
-{% trans_default_domain 'FOSUserBundle' %}
+{% block listSite %}
+    {{ render(controller('AppBundle:Index:showSite')) }}
+{% endblock %}
 
-{% block fos_index_content %}
-    Je suis un simple user connecté, test1
-{% endblock fos_index_content %}
 

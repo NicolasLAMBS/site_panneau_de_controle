@@ -39,7 +39,7 @@ $(document).ready(function() {
             },
             'json'
         );
-    }, 3000);
+    }, 10000);
 });
 /**
  * Created by dev on 22/06/2015.

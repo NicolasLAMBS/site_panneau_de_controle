@@ -27,11 +27,11 @@ class IndexController extends Controller
 
     public function showSiteAction()
     {
-        $listUrl = $this->getDoctrine()
+        $listSite = $this->getDoctrine()
             ->getRepository('UserBundle:Url')
             ->findAll();
 
-        return $this->render('page/listSite.html.twig', array('listUrl' => $listUrl,
+        return $this->render('page/listSite.html.twig', array('listSite' => $listSite,
         ));
     }
 
