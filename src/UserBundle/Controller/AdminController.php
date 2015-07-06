@@ -44,6 +44,20 @@ class AdminController extends Controller
     }
 
     /**
+     * @Route("/admin/ajax/listUrl", name="admin_list_url")
+     * @Method({"POST"})
+     */
+    public function showUrlAction()
+    {
+        $listUrl = $this->getDoctrine()
+            ->getRepository('UserBundle:Url')
+            ->findAll();
+
+        return $this->render('page/listUrl.html.twig', array('listUrl' => $listUrl,
+        ));
+    }
+
+    /**
      * @Route("/admin/ajax/add", name="admin_add_url")
      * @Method({"POST"})
      */
