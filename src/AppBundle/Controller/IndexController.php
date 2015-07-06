@@ -1,12 +1,12 @@
 <?php
-// src/appBundle/Controller/IndexController.php
+// src/AppBundle/Controller/IndexController.php
 
 namespace AppBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use UserBundle\Entity\Url;
+use AppBundle\Entity\Url;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -33,7 +33,7 @@ class IndexController extends Controller
     public function showSiteAction()
     {
         $listSite = $this->getDoctrine()
-            ->getRepository('UserBundle:Url')
+            ->getRepository('AppBundle:Url')
             ->findAll();
 
         return $this->render('page/listSite.html.twig', array('listSite' => $listSite,
@@ -53,7 +53,7 @@ class IndexController extends Controller
         }
 
         $repository = $this->getDoctrine()
-            ->getRepository('UserBundle:Url');
+            ->getRepository('AppBundle:Url');
         $dataUrl = $repository->findAll();
 
         $countbug = 0;
@@ -82,7 +82,7 @@ class IndexController extends Controller
                 $countok++;
 
                 $em = $this->getDoctrine()->getManager();
-                $urlObject = $em->getRepository('UserBundle:Url')->find($urlelement->getId());
+                $urlObject = $em->getRepository('AppBundle:Url')->find($urlelement->getId());
                 $urlObject ->setState('1');
                 $em->flush();
 
@@ -92,7 +92,7 @@ class IndexController extends Controller
                 $countbug++;
 
                 $em = $this->getDoctrine()->getManager();
-                $urlObject = $em->getRepository('UserBundle:Url')->find($urlelement->getId());
+                $urlObject = $em->getRepository('AppBundle:Url')->find($urlelement->getId());
                 $urlObject ->setState('0');
                 $em->flush();
             }

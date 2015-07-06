@@ -1,13 +1,13 @@
 <?php
-// src/UserBundle/Controller/AdminController.php
+// src/AppBundle/Controller/AdminController.php
 
-namespace UserBundle\Controller;
+namespace AppBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use UserBundle\Entity\Url;
+use AppBundle\Entity\Url;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -50,7 +50,7 @@ class AdminController extends Controller
     public function showUrlAction()
     {
         $listUrl = $this->getDoctrine()
-            ->getRepository('UserBundle:Url')
+            ->getRepository('AppBundle:Url')
             ->findAll();
 
         return $this->render('page/listUrl.html.twig', array('listUrl' => $listUrl,
@@ -122,7 +122,7 @@ class AdminController extends Controller
         }
 
         $urltarget = $this->getDoctrine()
-            ->getRepository('UserBundle:Url')
+            ->getRepository('AppBundle:Url')
             ->find($id_data);
 
         if (!$urltarget) {

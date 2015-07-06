@@ -4,7 +4,7 @@ namespace AppBundle\Command;
 
 // src/AppBundle/Command/CronTasksRunCommand.php
 
-use UserBundle\Entity\Url;
+use AppBundle\Entity\Url;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -30,7 +30,7 @@ class CronTasksRunCommand extends ContainerAwareCommand
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $repository = $this->getDoctrine()
-            ->getRepository('UserBundle:Url');
+            ->getRepository('AppBundle:Url');
 
         $dataUrl = $repository->findAll();
 
@@ -44,13 +44,13 @@ class CronTasksRunCommand extends ContainerAwareCommand
             if ($code == 200) {
 
                 $em = $this->getDoctrine()->getManager();
-                $urlObject = $em->getRepository('UserBundle:Url')->find($urlelement->getId());
+                $urlObject = $em->getRepository('AppBundle:Url')->find($urlelement->getId());
                 $urlObject ->setState('1');
                 $em->flush();
             } else {
 
                 $em = $this->getDoctrine()->getManager();
-                $urlObject = $em->getRepository('UserBundle:Url')->find($urlelement->getId());
+                $urlObject = $em->getRepository('AppBundle:Url')->find($urlelement->getId());
                 $urlObject ->setState('0');
                 $em->flush();
             }

@@ -1,7 +1,7 @@
 <?php
-// src/UserBundle/Entity/Url.php
+// src/AppBundle/Entity/Url.php
 
-namespace UserBundle\Entity;
+namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
