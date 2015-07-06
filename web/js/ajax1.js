@@ -3,7 +3,7 @@
  */
 
 $(document).ready(function() {
-    console.log("jQuery est prêt !");
+    console.log("jQuery du fichier ajax1.js est prêt !");
 
     setInterval(function checkSite() {
         $.post(

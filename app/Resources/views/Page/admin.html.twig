@@ -7,10 +7,10 @@
     <h3>Formulaire d'ajout d'URL :</h3>
 
     {{ form_start(form, {'attr': {'id': 'form'} } ) }}
-        {{ form_errors(form) }}
+    {{ form_errors(form) }}
 
-        {{ form_row(form.url, {'id': 'form_url_id'}) }}
-        {{ form_row(form.save, {'id': 'form_save_id'}) }}
+    {{ form_row(form.url, {'id': 'form_url_id'}) }}
+    {{ form_row(form.save, {'id': 'form_save_id'}) }}
 
     {{ form_end(form) }}
 

@@ -3,7 +3,7 @@
  */
 
 $(document).ready(function() {
-    console.log("jQuery est prêt !");
+    console.log("jQuery du fichier ajax.js est prêt !");
 
     $("#form").on('submit', function(e) {
 

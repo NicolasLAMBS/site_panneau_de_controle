@@ -22,7 +22,7 @@ class ListUrlController extends Controller
             ->getRepository('UserBundle:Url')
             ->findAll();
 
-        return $this->render('page/index.html.twig', array('listUrl' => $listUrl,
+        return $this->render('page/listUrl.html.twig', array('listUrl' => $listUrl,
         ));
     }
 }
